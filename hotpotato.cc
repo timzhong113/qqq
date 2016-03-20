@@ -3,6 +3,8 @@
 #include <unistd.h> //getpid
 #include <cstdlib>	//exit
 #include "printer.h"
+#include "player.h"
+#include "umpire.h"
 
 using namespace std;
 
