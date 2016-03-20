@@ -1,5 +1,6 @@
 #include "player.h"
 #include "PRNG.h"
+#include "printer.h"
 
 Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id){
 	players.push_back(this);

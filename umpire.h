@@ -1,8 +1,9 @@
 #ifndef UMPIRE_H
 #define UMPIRE_H
 #include "player.h"
-#include "printer.h"
 #include "potato.h"
+class Potato;
+class Printer;
 
 class Umpire {
     Printer &prt;

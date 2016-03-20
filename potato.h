@@ -1,6 +1,8 @@
 #ifndef POTATO_H
 #define POTATO_H
 
+class Printer;
+
 class Potato {
     Printer &prt;
   public:

@@ -1,5 +1,7 @@
 #include "potato.h"
 #include "PRNG.h"
+#include "printer.h"
+
 Potato::Potato( Printer &prt ):prt(prt){}
 
 Mashed::Mashed( Printer &prt, unsigned int maxTicks = 10 ):Potato(prt){

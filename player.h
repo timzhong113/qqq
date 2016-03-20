@@ -4,6 +4,8 @@
 #include "potato.h"
 using namespace std;
 
+class Printer;
+
 class Player {
   protected:
     Printer &prt;
