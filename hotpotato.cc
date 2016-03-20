@@ -23,25 +23,25 @@ int main( int argc, char *argv[] ){
 				seed = getpid();
 
 			case 2:		//have 1 argument
-				if(argv[1]<2 || argv[1]>20) throw ios_base::failure();
-				nop = argv[1];
+				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0) throw ios_base::failure("Usage Error");
+				nop = (unsigned int)*argv[1];
 				maxtick = 10;
 				seed = getpid();
 
 			case 3:		//have 2 arguments
-				if(argv[1]<2 || argv[1]>20 || argv[2]<2) throw ios_base::failure();
-				nop = argv[1];
-				maxtick = argv[2];
+				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0 || strcmp("2",argv[2])>0 ) throw ios_base::failure("Usage Error");
+				nop = (unsigned int)*argv[1];
+				maxtick = (unsigned int)*argv[2];
 				seed = getpid();
 
 			case 4:		//have 3 arguments
-				if(argv[1]<2 || argv[1]>20 || argv[2]<2 || argv[3]<1) throw ios_base::failure();
-				nop = argv[1];
-				maxtick = argv[2];
-				seed = argv[3];
+				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0 || strcmp("2",argv[2])>0 || strcmp("1",argv[3])>0) throw ios_base::failure("Usage Error");
+				nop = (unsigned int)*argv[1];
+				maxtick = (unsigned int)*argv[2];
+				seed = (unsigned int)*argv[3];
 
 			default:	//more than 3 arguments, usage error occurs
-				throw ios_base::failure();
+				throw ios_base::failure("Usage Error");
 		}
 	}catch(ios_base::failure){
 		cerr<<"Usage: ./hotpotato [ P (number of players 2..20) ";

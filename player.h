@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <vector>
+#include "potato.h"
 using namespace std;
 
 class Player {
@@ -15,6 +16,7 @@ class Player {
         Lost( const unsigned int *id ): id(id){}
     };
     Player( Printer &prt, unsigned int id, Players &players );
+    virtual ~Player();
     virtual unsigned int getId();       //get next player's index in players
     virtual void toss( Potato &potato ) = 0; // must be defined in derived class
 };
