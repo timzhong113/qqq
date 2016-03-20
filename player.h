@@ -26,6 +26,7 @@ class RNPlayer : public Player {
   public:
     RNPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
+    virtual ~RNPlayer();
 };
 
 class LRPlayer : public Player {
@@ -33,6 +34,7 @@ class LRPlayer : public Player {
   public:
     LRPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
+    virtual ~LRPlayer();
 };
 
 #endif

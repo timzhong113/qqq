@@ -1,6 +1,6 @@
 #include "printer.h"
 
-Printer( unsigned int players ){
+Printer::Printer( unsigned int players ){
 	length = players+3;
 	arr = new unsigned int[players+3];
 	for(unsigned int i=0; i<length; i++){
@@ -8,11 +8,11 @@ Printer( unsigned int players ){
 	}
 }
 
-~Printer(){
+Printer::~Printer(){
 	delete [] arr;
 }
 
-void print( Kind kind, unsigned int state, unsigned int id = 0, unsigned int player = 0 ){
+void Printer::print( Kind kind, unsigned int state, unsigned int id = 0, unsigned int player = 0 ){
 	switch(state){
 		case 1:
 			//buffer is empty or not, if not then print&store, otherwise just store
