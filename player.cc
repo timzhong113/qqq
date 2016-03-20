@@ -10,42 +10,8 @@ RNPlayer::RNPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt
 
 LRPlayer::LRPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){}
 
-unsigned int RNPlayer::getId(){
-	uint32_t size = (uint32_t)players.size()-1;
-	uint32_t num = prng(size);
-	return (unsigned int)num;
-}
-
-unsigned int LRPlayer::getId(){
-	uint32_t num = prng(1);
-	if(num == 0){	//left
-		unsigned int size = players.size();
-		if(players[size-1].id==id) return 0;//players[0].id;
-		else{
-			unsigned int index;
-			for(unsigned int i=0; i<size; i++){
-				if(players[i].id==id){
-					index = i;
-					break;
-				}
-			}
-			return index+1;//players[index+1].id;
-		}
-	}
-	else{	//right
-		unsigned int size = players.size();
-		if(players[0].id==id) return size-1;//players[size-1].id;
-		else{
-			unsigned int index;
-			for(unsigned int i=0; i<size; i++){
-				if(players[i].id==id){
-					index = i;
-					break;
-				}
-			}
-			return index-1;//players[index-1].id;
-		}
-	}
+unsigned int Player::getId(){
+	return id;
 }
 
 void RNPlayer::toss( Potato &potato ){
@@ -56,7 +22,8 @@ void RNPlayer::toss( Potato &potato ){
 	}
 	
 	//pass to next player
-	unsigned int nextId = getId();
+	uint32_t size = (uint32_t)players.size()-1;
+	unsigned int nextId = (unsigned int)prng(size);
 	prt.print(3,1,players[nextId].id,id);
 	players[nextId].toss(potato);
 }
@@ -69,7 +36,40 @@ void LRPlayer::toss( Potato &potato ){
 	}
 
 	//pass to next player
-	unsigned int nextId = getId();
+	uint32_t num = prng(1);
+	if(num == 0){	//left
+		unsigned int size = players.size();
+		if(players[size-1].id==id){
+			unsigned int nextId = 0;//players[0].id;
+		}
+		else{
+			unsigned int index;
+			for(unsigned int i=0; i<size; i++){
+				if(players[i].id==id){
+					index = i;
+					break;
+				}
+			}
+			unsigned int nextId = index+1;//players[index+1].id;
+		}
+	}
+	else{	//right
+		unsigned int size = players.size();
+		if(players[0].id==id){
+			unsigned int nextId = size-1;//players[size-1].id;
+		}
+		else{
+			unsigned int index;
+			for(unsigned int i=0; i<size; i++){
+				if(players[i].id==id){
+					index = i;
+					break;
+				}
+			}
+			unsigned int nextId = index-1;//players[index-1].id;
+		}
+	}
+
 	prt.print(3,1,players[nextId].id,id);
 	players[nextId].toss(potato);
 }

@@ -24,7 +24,6 @@ class Player {
 };
 
 class RNPlayer : public Player {
-    unsigned int getId();       //get next player's index in players
   public:
     RNPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
@@ -32,7 +31,6 @@ class RNPlayer : public Player {
 };
 
 class LRPlayer : public Player {
-    unsigned int getId();       //get next player's index in players
   public:
     LRPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
