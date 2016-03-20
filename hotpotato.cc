@@ -69,7 +69,20 @@ int main( int argc, char *argv[] ){
 	}
 
 	//potato
+	Mashed mashed(printer,maxtick);
+		//print
+	Fried fried(printer,maxtick);
+		//print
 
 	//umpire
+	Umpire umpire(printer,maxtick,players);
+	// isEven = true;
+	// while(1){
+	// 	if(isEven){		//throw mashed potato
 
+	// 	}
+	// 	else{			//throw fried potato
+
+	// 	}
+	// }
 }//main
