@@ -6,6 +6,9 @@
 
 using namespace std;
 
+PRNG prng;
+extern PRNG prng;
+
 int main( int argc, char *argv[] ){
 	unsigned int nop, maxtick;
 	uint32_t seed;
@@ -44,6 +47,9 @@ int main( int argc, char *argv[] ){
         cerr<<"[ S (seed for random-number generator (1..N) ] ] ]"<<endl;
         exit(1);
 	}//try
+
+	//PRNG
+	prng.seed(seed);
 
 	//printer
 	Printer printer(nop);

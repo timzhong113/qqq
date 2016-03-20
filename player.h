@@ -1,27 +1,33 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+#include <vector>
+using namespace std;
 
 class Player {
-    // YOU ADD MEMBERS
+  protected:
+    Printer &prt;
+    unsigned int id;
   public:
-    typedef ... Players;             // container type of your choice
+    typedef vector<Player> Players;             // container type of your choice
+    Players players;
     struct Lost {                    // raise after timer expires
-        // YOU ADD MEMBERS
+        const unsigned int *id;
+        Lost( const unsigned int *id ): id(id){}
     };
     Player( Printer &prt, unsigned int id, Players &players );
-    virtual unsigned int getId();
+    virtual unsigned int getId();       //get next player's index in players
     virtual void toss( Potato &potato ) = 0; // must be defined in derived class
 };
 
 class RNPlayer : public Player {
-    // YOU ADD MEMBERS
+    unsigned int getId();       //get next player's index in players
   public:
     RNPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
 };
 
 class LRPlayer : public Player {
-    // YOU ADD MEMBERS
+    unsigned int getId();       //get next player's index in players
   public:
     LRPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
