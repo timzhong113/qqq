@@ -2,7 +2,7 @@
 #define POTATO_H
 
 class Potato {
-    Printer prt;
+    Printer &prt;
   public:
     struct Expire {};                // raise when timer expires
     Potato( Printer &prt );

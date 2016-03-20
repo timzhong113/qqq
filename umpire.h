@@ -5,7 +5,7 @@
 #include "potato.h"
 
 class Umpire {
-    Printer prt;
+    Printer &prt;
     unsigned int maxticks;
     Player::Players players;
   public:
