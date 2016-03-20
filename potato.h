@@ -2,7 +2,7 @@
 #define POTATO_H
 
 class Potato {
-    // YOU ADD MEMBERS
+    Printer prt;
   public:
     struct Expire {};                // raise when timer expires
     Potato( Printer &prt );
@@ -11,7 +11,8 @@ class Potato {
 };
 
 class Mashed : public Potato {
-    // YOU ADD MEMBERS
+    unsigned int maxticks;
+    unsigned int ticks;     //current ticks, set up by reset()
   public:
     Mashed( Printer &prt, unsigned int maxTicks = 10 );
     void reset();
@@ -19,7 +20,8 @@ class Mashed : public Potato {
 };
 
 class Fried : public Potato {
-    // YOU ADD MEMBERS
+    unsigned int maxticks;
+    unsigned int ticks;     //current ticks, set up by reset()
   public:
     Fried( Printer &prt, unsigned int maxTicks = 10 );
     void reset();
