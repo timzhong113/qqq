@@ -4,7 +4,7 @@ Potato::Potato( Printer &prt ):prt(prt){}
 
 Mashed::Mashed( Printer &prt, unsigned int maxTicks = 10 ):Potato(prt){
 	maxticks = maxTicks;
-	ticks = 0;
+	reset();
 }
 
 void Mashed::reset(){
@@ -20,12 +20,12 @@ void Mashed::countdown(){
 
 Fried::Fried( Printer &prt, unsigned int maxTicks = 10 ):Potato(prt){
 	maxticks = maxTicks;
-	ticks = 0;
+	reset();
 }
 
 void Fried::reset(){
 	ticks = maxticks;
-	prt.print(0,4,ticks);
+	prt.print(0,5,ticks);
 }
 
 void Fried::countdown(){

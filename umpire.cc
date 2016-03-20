@@ -1,5 +1,69 @@
 #include "umpire.h"
 
-Umpire::Umpire( Printer &prt, unsigned int maxticks, Player::Players &players );
+Umpire::Umpire( Printer &prt, unsigned int maxticks, Player::Players &players ):prt(prt),maxticks(maxticks),players(players){}
 
-void Umpire::start();
+void Umpire::start(){
+	Mashed mashed(prt,maxticks);
+	Fried fried(prt,maxticks);
+	bool isEven = true;
+
+	while(1){
+		try{
+			if(isEven){	//throw mashed potato
+				mashed.reset();
+				uint32_t size = (uint32_t)players.size()-1;
+				uint32_t num = prng(size);
+				unsigned int playerId = (unsigned int)num;
+				prt.print(2,6,playerId);
+
+				unsigned int length = players.size();
+				unsigned int position;
+				for(unsigned int i=0; i<length; i++){
+					if(players[i].id == playerId){
+						position = i;
+						break;
+					}
+				}
+
+				isEven = false;
+				players[position].toss(mashed);
+			}
+			else{	//throw fried potato
+				fried.reset();
+				uint32_t size = (uint32_t)players.size()-1;
+				uint32_t num = prng(size);
+				unsigned int playerId = (unsigned int)num;
+				prt.print(2,6,playerId);
+
+				unsigned int length = players.size();
+				unsigned int position;
+				for(unsigned int i=0; i<length; i++){
+					if(players[i].id == playerId){
+						position = i;
+						break;
+					}
+				}
+
+				isEven = true;
+				players[position].toss(fried);
+			}
+		}catch(const Lost &id){
+			unsigned int length = players.size();
+			unsigned int position;
+			for(unsigned int i=0; i<length; i++){
+				if(players[i].id == id){
+					position = i;
+					break;
+				}
+			}
+			prt.print(3,2,0,id);
+			players.erase(players.begin()+position);
+			if(players.size()==1){	//someone wins
+				unsigned int winner = players[0].id;
+				prt.print(3,3,0,winner);
+				exit(0);
+			}
+			else continue;
+		}//try
+	}//while
+}

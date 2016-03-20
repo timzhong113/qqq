@@ -91,7 +91,7 @@ void print( Kind kind, unsigned int state, unsigned int id = 0, unsigned int pla
 
 		case 3:
 			for(unsigned int i=0; i<length; i++){
-				if(i==3) cout<<setw(8)<<left<<"W "<<player;
+				if(i==2) cout<<setw(8)<<left<<"W "<<player;
 				else{
 					if(i+1 == length) cout<<setw(4);	//last column
 					else cout<<setw(8);					
@@ -105,13 +105,13 @@ void print( Kind kind, unsigned int state, unsigned int id = 0, unsigned int pla
 			arr[1] = id;
 
 		case 6:
-			arr[3] = id;
+			arr[2] = id;
 
 		default:	//state 0
 			for(unsigned int i=0; i<length; i++){
-				if(arr[i].kind==0) cout<<setw(8)<<left<<"M";
-				else if(arr[i].kind==1) cout<<setw(8)<<left<<"F";
-				else if(arr[i].kind==2) cout<<setw(8)<<left<<"U";
+				if(i==0) cout<<setw(8)<<left<<"M";
+				else if(i==1) cout<<setw(8)<<left<<"F";
+				else if(i==2) cout<<setw(8)<<left<<"U";
 				else {
 					if(i+1 == length) cout<<setw(4)<<left<<"P"<<id<<endl;
 					else{
