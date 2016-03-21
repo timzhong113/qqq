@@ -21,11 +21,9 @@ int main( int argc, char *argv[] ){
 				nop = 5;
 				maxtick = 10;
 				seed = getpid();
-				cout<<"+++++++++++++++"<<endl;
 				break;
 
 			case 2:		//have 1 argument
-			cout<<"1111111"<<endl;
 				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0) throw ios_base::failure("Usage Error");
 				nop = (unsigned int)*argv[1];
 				maxtick = 10;
@@ -57,13 +55,13 @@ int main( int argc, char *argv[] ){
         cerr<<"[ S (seed for random-number generator (1..N) ] ] ]"<<endl;
         exit(1);
 	}//try
-cout<<"*************"<<endl;
+	
 	//PRNG
 	prng.seed(seed);
-
+	
 	//printer
 	Printer printer(nop);
-
+	
 	//player
 	vector<Player *> players;
 	bool isEven = true;

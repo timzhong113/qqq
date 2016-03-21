@@ -76,6 +76,7 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				}
 				arr[player] = id;
 			}//else
+			break;
 
 		case 2:
 			for(unsigned int i=0; i<length; i++){
@@ -91,6 +92,7 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 					}					
 				}
 			}
+			break;
 
 		case 3:
 			for(unsigned int i=0; i<length; i++){
@@ -100,15 +102,19 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 					else cout<<setw(8);					
 				}
 			}
+			break;
 			
 		case 4:
 			arr[0] = id;
+			break;
 
 		case 5:
 			arr[1] = id;
+			break;
 
 		case 6:
 			arr[2] = id;
+			break;
 
 		default:	//state 0
 			for(unsigned int i=0; i<length; i++){
@@ -124,8 +130,9 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				}
 			}
 			for(unsigned int j=0; j<length; j++){
-				if(j+1 == length) cout<<setw(4)<<left<<"==="<<id<<endl;
-				else cout<<setw(8)<<left<<"==="<<id;
+				if(j+1 == length) cout<<setw(4)<<left<<"==="<<endl;
+				else cout<<setw(8)<<left<<"===";
 			}
+			break;
 	}//switch
 }//print
