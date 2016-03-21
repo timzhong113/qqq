@@ -83,5 +83,7 @@ int main( int argc, char *argv[] ){
 
 	//umpire
 	Umpire umpire(printer,maxtick,players);
+	cout<<"88888"<<endl;
 	umpire.start();
+	cout<<"99999"<<endl;
 }//main
