@@ -1,4 +1,7 @@
 #include "printer.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
 Printer::Printer( unsigned int players ){
 	length = players+3;
@@ -12,7 +15,7 @@ Printer::~Printer(){
 	delete [] arr;
 }
 
-void Printer::print( Kind kind, unsigned int state, unsigned int id = 0, unsigned int player = 0 ){
+void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned int player ){
 	switch(state){
 		case 1:
 			//buffer is empty or not, if not then print&store, otherwise just store
@@ -121,7 +124,7 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id = 0, unsigne
 				}
 			}
 			for(unsigned int j=0; j<length; j++){
-				if(i+1 == length) cout<<setw(4)<<left<<"==="<<id<<endl;
+				if(j+1 == length) cout<<setw(4)<<left<<"==="<<id<<endl;
 				else cout<<setw(8)<<left<<"==="<<id;
 			}
 	}//switch

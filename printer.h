@@ -1,6 +1,5 @@
 #ifndef PRINTER_H
 #define PRINTER_H
-
 /*
 state = 0(default) means print the first line 
 		which are objects' name
