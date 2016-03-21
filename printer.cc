@@ -37,8 +37,8 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 
 				//the third column, Umpire
 				if(arr[2] != length){
-					if(isMashed) cout<<"M "<<setw(7)<<left<<arr[2];
-					else cout<<"F "<<setw(7)<<left<<arr[2];
+					if(isMashed) cout<<"M "<<setw(6)<<left<<arr[2];
+					else cout<<"F "<<setw(6)<<left<<arr[2];
 				}
 				else cout<<setw(8)<<left<<" ";
 				
@@ -84,15 +84,15 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 
 		case 2:
 			for(unsigned int i=0; i<length; i++){
-				if(i<3) cout<<setw(8);
+				if(i<3) cout<<setw(8)<<left<<" ";
 				else{
 					if(i+1 == length){	//last column
 						if(i-3 == player) cout<<"*"<<setw(3)<<left<<endl;
 						else cout<<"..."<<setw(3)<<left<<endl;
 					}
 					else{
-						if(i-3 == player) cout<<"*"<<setw(7)<<left;
-						else cout<<"..."<<setw(7)<<left;
+						if(i-3 == player) cout<<setw(8)<<left<<"*";
+						else cout<<setw(8)<<left<<"...";
 					}					
 				}
 			}
@@ -102,8 +102,8 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 			for(unsigned int i=0; i<length; i++){
 				if(i==2) cout<<"W "<<player<<setw(5)<<left;
 				else{
-					if(i+1 == length) cout<<setw(4)<<endl;	//last column
-					else cout<<setw(8);					
+					if(i+1 == length) cout<<setw(4)<<left<<" "<<endl;	//last column
+					else cout<<setw(8)<<left<<" ";
 				}
 			}
 			break;

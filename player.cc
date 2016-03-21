@@ -33,10 +33,10 @@ void RNPlayer::toss( Potato &potato ){
 	}
 	
 	//pass to next player
-	uint32_t size = (uint32_t)players.size()-1;
-	unsigned int nextId = (unsigned int)prng(size);
-	prt.print(Printer::Player,1,players[nextId]->getId(),id);
-	players[nextId]->toss(potato);
+	uint32_t size = (uint32_t)players.size();
+	unsigned int next = (unsigned int)prng(size-1);
+	prt.print(Printer::Player,1,players[next]->getId(),getId());
+	players[next]->toss(potato);
 }
 
 void LRPlayer::toss( Potato &potato ){
@@ -48,40 +48,24 @@ void LRPlayer::toss( Potato &potato ){
 
 	//pass to next player
 	uint32_t num = prng(1);
-	unsigned int nextId;
-	if(num == 0){	//left
-		unsigned int size = players.size();
-		if(players[size-1]->getId()==id){
-			nextId = 0;//players[0].id;
-		}
-		else{
-			unsigned int index;
-			for(unsigned int i=0; i<size; i++){
-				if(players[i]->getId()==id){
-					index = i;
-					break;
-				}
-			}
-			nextId = index+1;//players[index+1].id;
+	unsigned int next;		//next player's position
+	unsigned int position;	//current player's position
+	unsigned int size = players.size();	//the size of container
+	for(unsigned int i=0; i<size; i++){
+		if(players[i]->getId() == getId()){
+			position = i;
+			break;
 		}
 	}
-	else{	//right
-		unsigned int size = players.size();
-		if(players[0]->getId()==id){
-			nextId = size-1;//players[size-1].id;
-		}
-		else{
-			unsigned int index;
-			for(unsigned int i=0; i<size; i++){
-				if(players[i]->getId()==id){
-					index = i;
-					break;
-				}
-			}
-			nextId = index-1;//players[index-1].id;
-		}
+	if(num==0){		//left
+		if(position == size-1) next = 0;
+		else next = position+1;
+	}
+	else{
+		if(position == 0) next = size-1;
+		else next = position-1;
 	}
 
-	prt.print(Printer::Player,1,players[nextId]->getId(),id);
-	players[nextId]->toss(potato);
+	prt.print(Printer::Player,1,players[next]->getId(),getId());
+	players[next]->toss(potato);
 }
