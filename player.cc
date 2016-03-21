@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id),lost(Lost(id)),players(players){
+Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id),players(players){
 	players.push_back(this);
 }
 
@@ -28,7 +28,7 @@ void RNPlayer::toss( Potato &potato ){
 	try{
 		potato.countdown();
 	}catch(Potato::Expire){	//player loses
-		throw lost;
+		throw Lost(getId());
 	}
 	
 	//pass to next player
@@ -42,7 +42,7 @@ void LRPlayer::toss( Potato &potato ){
 	try{
 		potato.countdown();
 	}catch(Potato::Expire){	//player loses
-		throw lost;
+		throw Lost(getId());
 	}
 
 	//pass to next player
