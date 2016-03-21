@@ -3,16 +3,9 @@
 #include <vector>
 #include "potato.h"
 using namespace std;
-<<<<<<< HEAD
-extern PRNG prng;
-=======
 
-<<<<<<< HEAD
 extern PRNG prng;
 
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 class Printer;
 
 class Player {
