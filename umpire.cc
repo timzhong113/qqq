@@ -40,9 +40,8 @@ void Umpire::start(){
 				uint32_t num = prng(size);
 				unsigned int playerId = (unsigned int)num;
 				prt.print(Printer::Umpire,6,playerId);
-
 				unsigned int length = players.size();
-				unsigned int position;
+				unsigned int position=0;
 				for(unsigned int i=0; i<length; i++){
 					if(players[i]->getId() == playerId){
 						position = i;
@@ -51,6 +50,9 @@ void Umpire::start(){
 				}
 
 				isEven = true;
+				cout<<"++++++++"<<endl;
+				cout<<"position is: "<<position<<endl;
+				cout<<"player's id: "<<players[position]->getId()<<endl;
 				players[position]->toss(fried);
 			}
 		}catch(Player::Lost lost){

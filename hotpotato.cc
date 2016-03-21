@@ -62,7 +62,7 @@ int main( int argc, char *argv[] ){
 
 	//printer
 	Printer printer(nop);
-
+	printer.print(Printer::Umpire,0,nop);
 	//player
 	vector<Player *> players;
 	bool isEven = true;

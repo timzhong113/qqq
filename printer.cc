@@ -36,8 +36,8 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				else cout<<setw(8);
 
 				//the third column, Umpire
-				if(isMashed) cout<<setw(8)<<left<<"M "<<arr[2];
-				else cout<<setw(8)<<left<<"F "<<arr[2];
+				if(isMashed) cout<<"M "<<setw(8)<<left<<arr[2];
+				else cout<<"F "<<setw(8)<<left<<arr[2];
 
 				bool isEven = true;
 				for(unsigned int i=3; i<length; i++){
@@ -52,10 +52,10 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 						else symbol = 'R';	//RMPlayer
 
 						if(i+1 == length){	//the last column
-							cout<<setw(4)<<left<<symbol<<" "<<arr[player]<<endl;
+							cout<<symbol<<" "<<arr[player]<<setw(1)<<left<<endl;
 						}
 						else{	//not the last column
-							cout<<setw(8)<<left<<symbol<<" "<<arr[player];
+							cout<<symbol<<" "<<arr[player]<<setw(5)<<left;
 						}
 					}
 
@@ -83,12 +83,12 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				if(i<3) cout<<setw(8);
 				else{
 					if(i+1 == length){	//last column
-						if(i-3 == player) cout<<setw(4)<<left<<"*"<<endl;
-						else cout<<setw(4)<<left<<"..."<<endl;;
+						if(i-3 == player) cout<<"*"<<setw(3)<<left<<endl;
+						else cout<<"..."<<setw(3)<<left<<endl;;
 					}
 					else{
-						if(i-3 == player) cout<<setw(8)<<left<<"*";
-						else cout<<setw(8)<<left<<"...";
+						if(i-3 == player) cout<<"*"<<setw(7)<<left;
+						else cout<<"..."<<setw(7)<<left;
 					}					
 				}
 			}
@@ -96,7 +96,7 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 
 		case 3:
 			for(unsigned int i=0; i<length; i++){
-				if(i==2) cout<<setw(8)<<left<<"W "<<player;
+				if(i==2) cout<<"W "<<player<<setw(5)<<left;
 				else{
 					if(i+1 == length) cout<<setw(4)<<endl;	//last column
 					else cout<<setw(8);					
@@ -122,10 +122,9 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				else if(i==1) cout<<setw(8)<<left<<"F";
 				else if(i==2) cout<<setw(8)<<left<<"U";
 				else {
-					if(i+1 == length) cout<<setw(4)<<left<<"P"<<id<<endl;
+					if(i+1 == length) cout<<"P"<<setw(3)<<left<<i-3<<endl;
 					else{
-						cout<<setw(8)<<left<<"P"<<id;
-						id++;
+						cout<<"P"<<setw(7)<<left<<i-3;
 					}
 				}
 			}
