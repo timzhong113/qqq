@@ -2,7 +2,10 @@
 #define PLAYER_H
 #include <vector>
 #include "potato.h"
+#include "PRNG.h"
 using namespace std;
+
+extern PRNG prng;
 
 class Printer;
 
