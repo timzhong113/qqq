@@ -12,7 +12,7 @@ Mashed::Mashed( Printer &prt, unsigned int maxTicks ):Potato(prt){
 void Mashed::reset(){
 	uint32_t tick = prng(1,maxticks);
 	ticks = (unsigned int)tick;
-	prt.print(Printer::Mashed,4,ticks);
+	prt.print(Printer::Mashed,ticks);
 }
 
 void Mashed::countdown(){
@@ -27,7 +27,7 @@ Fried::Fried( Printer &prt, unsigned int maxTicks ):Potato(prt){
 
 void Fried::reset(){
 	ticks = maxticks;
-	prt.print(Printer::Fried,5,ticks);
+	prt.print(Printer::Fried,ticks);
 }
 
 void Fried::countdown(){

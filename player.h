@@ -29,15 +29,14 @@ class RNPlayer : public Player {
     RNPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
     virtual ~RNPlayer(){};
-    unsigned int getId();
 };
 
 class LRPlayer : public Player {
+    bool direction;
   public:
     LRPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
     virtual ~LRPlayer(){};
-    unsigned int getId();
 };
 
 #endif

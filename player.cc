@@ -6,21 +6,19 @@
 using namespace std;
 
 Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id),players(players){
-	players.push_back(this);
+	cerr<<"id "<<id<<endl;
 }
 
-RNPlayer::RNPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){}
+RNPlayer::RNPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){
+	players[id]=this;
+}
 
-LRPlayer::LRPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){}
+LRPlayer::LRPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){
+	players[id]=this;
+	direction = false;
+}
 
 unsigned int Player::getId(){
-	return id;
-}
-unsigned int RNPlayer::getId(){
-	return id;
-}
-
-unsigned int LRPlayer::getId(){
 	return id;
 }
 
@@ -32,9 +30,9 @@ void RNPlayer::toss( Potato &potato ){
 	}
 	
 	//pass to next player
-	uint32_t size = (uint32_t)players.size();
-	unsigned int next = (unsigned int)prng(size-1);
-	prt.print(Printer::Player,1,players[next]->getId(),getId());
+	unsigned int next = prng(players.size()-1);
+	cerr<<"Ran"<<endl;
+	prt.print(Printer::Player,'R',getId(),players[next]->getId());
 	players[next]->toss(potato);
 }
 
@@ -46,7 +44,6 @@ void LRPlayer::toss( Potato &potato ){
 	}
 
 	//pass to next player
-	uint32_t num = prng(1);
 	unsigned int next;		//next player's position
 	unsigned int position;	//current player's position
 	unsigned int size = players.size();	//the size of container
@@ -56,15 +53,18 @@ void LRPlayer::toss( Potato &potato ){
 			break;
 		}
 	}
-	if(num==0){		//to left
+
+	if(!direction){		//to left
 		if(position == size-1) next = 0;
 		else next = position+1;
+		direction = true;
+		prt.print(Printer::Player,'l',getId(),players[next]->getId());
 	}
 	else{			//to right
 		if(position == 0) next = size-1;
 		else next = position-1;
-	}
-
-	prt.print(Printer::Player,1,players[next]->getId(),getId());
+		direction = false;
+		prt.print(Printer::Player,'r',getId(),players[next]->getId());
+	}	
 	players[next]->toss(potato);
 }

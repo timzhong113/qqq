@@ -63,9 +63,9 @@ int main( int argc, char *argv[] ){
 
 	//printer
 	Printer printer(nop);
-	printer.print(Printer::Umpire,0,nop);
+
 	//player
-	vector<Player *> players;
+	Player::Players players(nop);
 	bool isEven = true;
 	for(unsigned int i=0; i<nop; i++){
 		if(isEven){
@@ -76,8 +76,13 @@ int main( int argc, char *argv[] ){
 			RNPlayer(printer, i, players);
 			isEven = true;
 		}
+		cerr<<"p: "<<players[i]->getId()<<endl;
+		cerr<<"i "<<i<<endl;
 	}
-
+	cout<<"player 0: "<<players[0]->getId()<<endl;
+	for(unsigned int i=0; i<nop; i++){
+		cout<<"player id: "<<players[i]->getId()<<endl;
+	}
 	//umpire
 	Umpire umpire(printer,maxtick,players);
 	umpire.start();

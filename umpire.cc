@@ -4,7 +4,9 @@
 #include <iostream>
 using namespace std;
 
-Umpire::Umpire( Printer &prt, unsigned int maxticks, Player::Players &players ):prt(prt),maxticks(maxticks),players(players){}
+Umpire::Umpire( Printer &prt, unsigned int maxticks, Player::Players &players ):prt(prt),maxticks(maxticks),players(players){
+
+}
 
 void Umpire::start(){
 	Mashed mashed(prt,maxticks);
@@ -13,42 +15,31 @@ void Umpire::start(){
 
 	while(1){
 		try{
-			if(isEven){	//throw mashed potato	
-				mashed.reset();
-				uint32_t size = (uint32_t)players.size()-1;
-				uint32_t num = prng(size);
-				unsigned int playerId = (unsigned int)num;
-				prt.print(Printer::Umpire,6,playerId);	
-				unsigned int length = players.size();
-				unsigned int position=0;
-				for(unsigned int i=0; i<length; i++){
-					if(players[i]->getId() == playerId){
-						position = i;
-						break;
-					}
+			uint32_t size = (uint32_t)players.size()-1;
+			uint32_t num = prng(size);
+			unsigned int playerId = (unsigned int)num;
+			if(isEven){
+				prt.print(Printer::Umpire,'M',0,playerId);
+			}
+			else{
+				prt.print(Printer::Umpire,'F',0,playerId);
+			}
+			unsigned int length = players.size();
+			unsigned int position=0;
+			for(unsigned int i=0; i<length; i++){
+				if(players[i]->getId() == playerId){
+					position = i;
+					break;
 				}
+			}
 
-				isEven = false;
+			if(isEven){
 				players[position]->toss(mashed);
 			}
-			else{	//throw fried potato
-				fried.reset();
-				uint32_t size = (uint32_t)players.size()-1;
-				uint32_t num = prng(size);
-				unsigned int playerId = (unsigned int)num;
-				prt.print(Printer::Umpire,6,playerId);
-				unsigned int length = players.size();
-				unsigned int position=0;
-				for(unsigned int i=0; i<length; i++){
-					if(players[i]->getId() == playerId){
-						position = i;
-						break;
-					}
-				}
-
-				isEven = true;
+			else{
 				players[position]->toss(fried);
 			}
+			
 		}catch(Player::Lost lost){
 			unsigned int length = players.size();
 			unsigned int position;
@@ -58,14 +49,24 @@ void Umpire::start(){
 					break;
 				}
 			}
-			prt.print(Printer::Player,2,0,lost.id);
-			players.erase(players.begin()+position-1);
+			prt.print(Printer::Player,'*',lost.id);
+			players.erase(players.begin()+position);
 			if(players.size()==1){	//someone wins
 				unsigned int winner = players[0]->getId();
-				prt.print(Printer::Player,3,0,winner);
+				prt.print(Printer::Umpire,'W',winner);
 				exit(0);
 			}
-			else continue;
+			else{
+				if(isEven){
+					mashed.reset();
+					isEven = false;
+				}
+				else{
+					fried.reset();
+					isEven = true;
+				}
+				continue;
+			}
 		}//try
 	}//while
 }

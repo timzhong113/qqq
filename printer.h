@@ -14,9 +14,14 @@ state = 5 means Fried potato called printer
 state = 6 means Umpire called printer
 */
 
+struct Buffer{
+	unsigned int state;
+	unsigned int player;
+};
+
 class Printer {
 	unsigned int length;
-	unsigned int *arr;
+	Buffer **arr;
   public:
     enum Kind { Mashed, Fried, Umpire, Player };
     Printer( unsigned int players );
