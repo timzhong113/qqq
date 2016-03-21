@@ -20,7 +20,7 @@ class Player {
         Lost( unsigned int id ): id(id){}
     } lost;
     Player( Printer &prt, unsigned int id, Players &players );
-    virtual unsigned int getId(){};       //get player's id
+    virtual unsigned int getId();       //get player's id
     virtual void toss( Potato &potato ) = 0; // must be defined in derived class
 };
 
