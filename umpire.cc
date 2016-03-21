@@ -65,7 +65,9 @@ void Umpire::start(){
 				}
 			}
 			prt.print(Printer::Player,2,0,lost.id);
-			players.erase(players.begin()+position);
+			cout<<"looking for fault"<<endl;
+			players.erase(players.begin()+position-1);
+			cout<<"looking for fault2"<<endl;
 			if(players.size()==1){	//someone wins
 				unsigned int winner = players[0]->getId();
 				prt.print(Printer::Player,3,0,winner);

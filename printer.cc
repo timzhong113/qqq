@@ -7,7 +7,7 @@ Printer::Printer( unsigned int players ){
 	length = players+3;
 	arr = new unsigned int[players+3];
 	for(unsigned int i=0; i<length; i++){
-		arr[i] = length;		//set a default value, which means empty
+		arr[i] = NULL;		//set default value
 	}
 }
 
@@ -21,28 +21,32 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 			//buffer is empty or not, if not then print&store, otherwise just store
 			if(arr[player+3] == length) arr[player+3] = id;
 			else{	
-				//first step: print
-
+				
+				//this step: print
 				//the first column, Mashed
 				bool isMashed = false;
-				if(arr[0] != length){
+				if(arr[0] != NULL){
 					isMashed = true;
-					cout<<setw(8)<<left<<arr[0];
+					cout<<arr[0]<<setw(7)<<left;
 				}
 				else cout<<setw(8);
 
 				//the second column, Fried
-				if(arr[1] != length) cout<<setw(8)<<left<<arr[0];
+				if(arr[1] != NULL) cout<<arr[1]<<setw(7)<<left;
 				else cout<<setw(8);
 
 				//the third column, Umpire
-				if(isMashed) cout<<"M "<<setw(8)<<left<<arr[2];
-				else cout<<"F "<<setw(8)<<left<<arr[2];
-
+				if(arr[2] != NULL){
+					if(isMashed) cout<<"M "<<arr[2]<<setw(5)<<left;
+					else cout<<"F "<<arr[2]<<setw(5)<<left;
+				}
+				else cout<<setw(8);
+				
+				//the rest of players
 				bool isEven = true;
 				for(unsigned int i=3; i<length; i++){
 					
-					if(arr[i] != length){	//not an empty column
+					if(arr[i] != NULL){	//not an empty column
 						char symbol;
 						//confirm the direction that the player is passing
 						if(isEven){	//LRPlayer
@@ -52,10 +56,10 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 						else symbol = 'R';	//RMPlayer
 
 						if(i+1 == length){	//the last column
-							cout<<symbol<<" "<<arr[player]<<setw(1)<<left<<endl;
+							cout<<symbol<<" "<<arr[i]<<setw(1)<<left<<endl;
 						}
 						else{	//not the last column
-							cout<<symbol<<" "<<arr[player]<<setw(5)<<left;
+							cout<<symbol<<" "<<arr[i]<<setw(5)<<left;
 						}
 					}
 
@@ -68,13 +72,13 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 					else isEven = true;
 				}//for
 
-				//second step: store
+				//the second step: store
 				delete [] arr;
 				arr = new unsigned int[length];
 				for(unsigned int i=0; i<length; i++){
 					arr[i] = length;
 				}
-				arr[player] = id;
+				arr[player+3] = id;
 			}//else
 			break;
 
@@ -84,7 +88,7 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				else{
 					if(i+1 == length){	//last column
 						if(i-3 == player) cout<<"*"<<setw(3)<<left<<endl;
-						else cout<<"..."<<setw(3)<<left<<endl;;
+						else cout<<"..."<<setw(3)<<left<<endl;
 					}
 					else{
 						if(i-3 == player) cout<<"*"<<setw(7)<<left;
