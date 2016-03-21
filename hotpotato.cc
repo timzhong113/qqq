@@ -65,7 +65,7 @@ cout<<"*************"<<endl;
 	Printer printer(nop);
 
 	//player
-	vector<Player> players;
+	vector<Player *> players;
 	bool isEven = true;
 	for(unsigned int i=0; i<nop; i++){
 		if(isEven){
