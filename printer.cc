@@ -46,10 +46,10 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 						char symbol;
 						//confirm the direction that the player is passing
 						if(isEven){	//LRPlayer
-							if(arr[i]-i == 1) symbol = "l";	//pass to left
-							else symbol = "r";	//pass to right
+							if(arr[i]-i == 1) symbol = 'l';	//pass to left
+							else symbol = 'r';	//pass to right
 						}
-						else symbol = "R";	//RMPlayer
+						else symbol = 'R';	//RMPlayer
 
 						if(i+1 == length){	//the last column
 							cout<<setw(4)<<left<<symbol<<" "<<arr[player]<<endl;
