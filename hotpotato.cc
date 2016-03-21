@@ -6,6 +6,7 @@
 #include "player.h"
 #include "umpire.h"
 #include "string.h"
+#include <stdlib.h>	//atoi
 
 using namespace std;
 
@@ -25,24 +26,24 @@ int main( int argc, char *argv[] ){
 				break;
 				
 			case 2:		//have 1 argument
-				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0) throw ios_base::failure("Usage Error");
-				nop = (unsigned int)*argv[1];
+				if((atoi(argv[1]) < 2) || (atoi(argv[1]) > 20)) throw ios_base::failure("Usage Error");
+				nop = atoi(argv[1]);
 				maxtick = 10;
 				seed = getpid();
 				break;
 
 			case 3:		//have 2 arguments
-				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0 || strcmp("2",argv[2])>0 ) throw ios_base::failure("Usage Error");
-				nop = (unsigned int)*argv[1];
-				maxtick = (unsigned int)*argv[2];
+				if((atoi(argv[1]) < 2) || (atoi(argv[1]) > 20)|| (atoi(argv[2]) < 2)) throw ios_base::failure("Usage Error");
+				nop = atoi(argv[1]);
+				maxtick = atoi(argv[2]);
 				seed = getpid();
 				break;
 
 			case 4:		//have 3 arguments
-				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0 || strcmp("2",argv[2])>0 || strcmp("1",argv[3])>0) throw ios_base::failure("Usage Error");
-				nop = (unsigned int)*argv[1];
-				maxtick = (unsigned int)*argv[2];
-				seed = (unsigned int)*argv[3];
+				if((atoi(argv[1]) < 2) || (atoi(argv[1]) > 20)|| (atoi(argv[2]) < 2) || (atoi(argv[3]) < 1)) throw ios_base::failure("Usage Error");
+				nop = atoi(argv[1]);
+				maxtick = atoi(argv[2]);
+				seed = atoi(argv[3]);
 				break;
 
 			default:	//more than 3 arguments, usage error occurs

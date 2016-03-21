@@ -6,7 +6,6 @@
 using namespace std;
 
 Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id),lost(Lost(id)),players(players){
-	//cout<<"lalala"<<endl;
 	players.push_back(this);
 }
 
@@ -34,7 +33,10 @@ void RNPlayer::toss( Potato &potato ){
 	
 	//pass to next player
 	uint32_t size = (uint32_t)players.size();
+	cerr << size << endl;
 	unsigned int next = (unsigned int)prng(size-1);
+	cout<<"*******"<<endl;
+	cout<<"next player's position: "<<next<<endl;
 	prt.print(Printer::Player,1,players[next]->getId(),getId());
 	players[next]->toss(potato);
 }
@@ -57,11 +59,11 @@ void LRPlayer::toss( Potato &potato ){
 			break;
 		}
 	}
-	if(num==0){		//left
+	if(num==0){		//to left
 		if(position == size-1) next = 0;
 		else next = position+1;
 	}
-	else{
+	else{			//to right
 		if(position == 0) next = size-1;
 		else next = position-1;
 	}
