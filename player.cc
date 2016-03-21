@@ -11,7 +11,11 @@ RNPlayer::RNPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt
 
 LRPlayer::LRPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){}
 
-unsigned int Player::getId(){
+unsigned int RNPlayer::getId(){
+	return id;
+}
+
+unsigned int LRPlayer::getId(){
 	return id;
 }
 

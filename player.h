@@ -20,7 +20,7 @@ class Player {
         Lost( unsigned int id ): id(id){}
     } lost;
     Player( Printer &prt, unsigned int id, Players &players );
-    virtual unsigned int getId();       //get next player's index in players
+    virtual unsigned int getId(){};       //get player's id
     virtual void toss( Potato &potato ) = 0; // must be defined in derived class
 };
 
@@ -29,6 +29,7 @@ class RNPlayer : public Player {
     RNPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
     virtual ~RNPlayer(){};
+    unsigned int getId();
 };
 
 class LRPlayer : public Player {
@@ -36,6 +37,7 @@ class LRPlayer : public Player {
     LRPlayer( Printer &prt, unsigned int id, Players &players );
     void toss( Potato &potato );
     virtual ~LRPlayer(){};
+    unsigned int getId();
 };
 
 #endif

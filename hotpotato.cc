@@ -19,11 +19,12 @@ int main( int argc, char *argv[] ){
 	try{
 		switch(argc){
 			case 1:		//all use default values
+			cout<<"111111"<<endl;
 				nop = 5;
 				maxtick = 10;
 				seed = getpid();
 				break;
-
+				
 			case 2:		//have 1 argument
 				if(strcmp("2",argv[1])>0 || strcmp(argv[1],"20")>0) throw ios_base::failure("Usage Error");
 				nop = (unsigned int)*argv[1];
@@ -56,7 +57,7 @@ int main( int argc, char *argv[] ){
         cerr<<"[ S (seed for random-number generator (1..N) ] ] ]"<<endl;
         exit(1);
 	}//try
-
+	cout<<"222222"<<endl;
 	//PRNG
 	prng.seed(seed);
 
