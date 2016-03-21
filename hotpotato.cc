@@ -60,19 +60,22 @@ int main( int argc, char *argv[] ){
 	cout<<"222222"<<endl;
 	//PRNG
 	prng.seed(seed);
-
+	cout<<"33333"<<endl;
 	//printer
 	Printer printer(nop);
-
+	cout<<"44444"<<endl;
 	//player
 	vector<Player *> players;
+	cout<<"55555"<<endl;
 	bool isEven = true;
 	for(unsigned int i=0; i<nop; i++){
 		if(isEven){
+			cout<<"66666"<<endl;
 			LRPlayer(printer, i, players);
 			isEven = false;
 		}
 		else{
+			cout<<"77777"<<endl;
 			RNPlayer(printer, i, players);
 			isEven = true;
 		}
