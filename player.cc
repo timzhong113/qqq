@@ -2,8 +2,11 @@
 #include "PRNG.h"
 #include "printer.h"
 #include <vector>
+#include <iostream>
+using namespace std;
 
-Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id),lost(Lost(id)){
+Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id),lost(Lost(id)),players(players){
+	//cout<<"lalala"<<endl;
 	players.push_back(this);
 }
 
@@ -24,6 +27,7 @@ unsigned int LRPlayer::getId(){
 
 void RNPlayer::toss( Potato &potato ){
 	try{
+		cout<<"11111111111"<<endl;
 		potato.countdown();
 	}catch(Potato::Expire){	//player loses
 		throw lost;
@@ -38,6 +42,7 @@ void RNPlayer::toss( Potato &potato ){
 
 void LRPlayer::toss( Potato &potato ){
 	try{
+		cout<<"2222222222"<<endl;
 		potato.countdown();
 	}catch(Potato::Expire){	//player loses
 		throw lost;

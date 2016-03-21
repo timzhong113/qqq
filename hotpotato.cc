@@ -19,7 +19,6 @@ int main( int argc, char *argv[] ){
 	try{
 		switch(argc){
 			case 1:		//all use default values
-			cout<<"111111"<<endl;
 				nop = 5;
 				maxtick = 10;
 				seed = getpid();
@@ -57,25 +56,22 @@ int main( int argc, char *argv[] ){
         cerr<<"[ S (seed for random-number generator (1..N) ] ] ]"<<endl;
         exit(1);
 	}//try
-	cout<<"222222"<<endl;
+
 	//PRNG
 	prng.seed(seed);
-	cout<<"33333"<<endl;
+
 	//printer
 	Printer printer(nop);
-	cout<<"44444"<<endl;
+
 	//player
 	vector<Player *> players;
-	cout<<"55555"<<endl;
 	bool isEven = true;
 	for(unsigned int i=0; i<nop; i++){
 		if(isEven){
-			cout<<"66666"<<endl;
 			LRPlayer(printer, i, players);
 			isEven = false;
 		}
 		else{
-			cout<<"77777"<<endl;
 			RNPlayer(printer, i, players);
 			isEven = true;
 		}
@@ -83,7 +79,6 @@ int main( int argc, char *argv[] ){
 
 	//umpire
 	Umpire umpire(printer,maxtick,players);
-	cout<<"88888"<<endl;
 	umpire.start();
-	cout<<"99999"<<endl;
+
 }//main

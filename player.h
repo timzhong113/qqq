@@ -14,7 +14,7 @@ class Player {
     unsigned int id;
   public:
     typedef vector<Player *> Players;             // container type of your choice
-    Players players;
+    Players &players;
     struct Lost {                    // raise after timer expires
         unsigned int id;
         Lost( unsigned int id ): id(id){}

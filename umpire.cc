@@ -1,6 +1,8 @@
 #include "umpire.h"
 #include "printer.h"
 #include <cstdlib>	//exit
+#include <iostream>
+using namespace std;
 
 Umpire::Umpire( Printer &prt, unsigned int maxticks, Player::Players &players ):prt(prt),maxticks(maxticks),players(players){}
 
@@ -11,15 +13,14 @@ void Umpire::start(){
 
 	while(1){
 		try{
-			if(isEven){	//throw mashed potato
+			if(isEven){	//throw mashed potato	
 				mashed.reset();
 				uint32_t size = (uint32_t)players.size()-1;
 				uint32_t num = prng(size);
 				unsigned int playerId = (unsigned int)num;
-				prt.print(Printer::Umpire,6,playerId);
-
+				prt.print(Printer::Umpire,6,playerId);	
 				unsigned int length = players.size();
-				unsigned int position;
+				unsigned int position=0;
 				for(unsigned int i=0; i<length; i++){
 					if(players[i]->getId() == playerId){
 						position = i;
@@ -28,6 +29,9 @@ void Umpire::start(){
 				}
 
 				isEven = false;
+				cout<<"*********"<<endl;
+				cout<<"position is: "<<position<<endl;
+				cout<<"player's id: "<<players[position]->getId()<<endl;
 				players[position]->toss(mashed);
 			}
 			else{	//throw fried potato
