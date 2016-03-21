@@ -5,6 +5,7 @@ extern PRNG prng;
 class Printer;
 
 class Potato {
+  protected:
     Printer &prt;
   public:
     struct Expire {};                // raise when timer expires
