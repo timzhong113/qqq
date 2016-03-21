@@ -15,5 +15,3 @@ class Umpire {
 };
 
 #endif
-
-

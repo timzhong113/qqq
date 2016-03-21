@@ -3,7 +3,7 @@
 #include "printer.h"
 
 Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id){
-	players.push_back(*this);
+	players.push_back(this);
 }
 
 RNPlayer::RNPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){}
