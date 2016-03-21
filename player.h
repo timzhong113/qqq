@@ -2,11 +2,17 @@
 #define PLAYER_H
 #include <vector>
 #include "potato.h"
-#include "PRNG.h"
 using namespace std;
+<<<<<<< HEAD
+extern PRNG prng;
+=======
 
+<<<<<<< HEAD
 extern PRNG prng;
 
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
 class Printer;
 
 class Player {
@@ -17,9 +23,9 @@ class Player {
     typedef vector<Player> Players;             // container type of your choice
     Players players;
     struct Lost {                    // raise after timer expires
-        const unsigned int *id;
-        Lost( const unsigned int *id ): id(id){}
-    };
+        unsigned int id;
+        Lost( unsigned int id ): id(id){}
+    } lost;
     Player( Printer &prt, unsigned int id, Players &players );
     virtual ~Player();
     virtual unsigned int getId();       //get next player's index in players

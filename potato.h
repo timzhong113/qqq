@@ -1,6 +1,7 @@
 #ifndef POTATO_H
 #define POTATO_H
-
+#include "PRNG.h"
+extern PRNG prng;
 class Printer;
 
 class Potato {
