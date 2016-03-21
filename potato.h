@@ -11,7 +11,7 @@ class Potato {
     struct Expire {};                // raise when timer expires
     Potato( Printer &prt );
     virtual void reset() = 0;        // must be defined in derived class
-    virtual void countdown();
+    virtual void countdown(){};
 };
 
 class Mashed : public Potato {
