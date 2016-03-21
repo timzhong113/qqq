@@ -48,16 +48,16 @@ void Umpire::start(){
 				isEven = true;
 				players[position]->toss(fried);
 			}
-		}catch(Player::Lost id){
+		}catch(Player::Lost lost){
 			unsigned int length = players.size();
 			unsigned int position;
 			for(unsigned int i=0; i<length; i++){
-				if(players[i]->getId() == id){
+				if(players[i]->getId() == lost.id){
 					position = i;
 					break;
 				}
 			}
-			prt.print(Printer::Player,2,0,id);
+			prt.print(Printer::Player,2,0,lost.id);
 			players.erase(players.begin()+position);
 			if(players.size()==1){	//someone wins
 				unsigned int winner = players[0]->getId();
