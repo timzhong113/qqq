@@ -5,6 +5,7 @@
 #include "printer.h"
 #include "player.h"
 #include "umpire.h"
+#include "string.h"
 
 using namespace std;
 
@@ -55,13 +56,13 @@ int main( int argc, char *argv[] ){
         cerr<<"[ S (seed for random-number generator (1..N) ] ] ]"<<endl;
         exit(1);
 	}//try
-	
+
 	//PRNG
 	prng.seed(seed);
-	
+
 	//printer
 	Printer printer(nop);
-	
+
 	//player
 	vector<Player *> players;
 	bool isEven = true;

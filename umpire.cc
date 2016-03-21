@@ -1,5 +1,6 @@
 #include "umpire.h"
 #include "printer.h"
+#include <cstdlib>	//exit
 
 Umpire::Umpire( Printer &prt, unsigned int maxticks, Player::Players &players ):prt(prt),maxticks(maxticks),players(players){}
 
