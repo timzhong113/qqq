@@ -7,7 +7,7 @@ Printer::Printer( unsigned int players ){
 	length = players+3;
 	arr = new unsigned int[players+3];
 	for(unsigned int i=0; i<length; i++){
-		arr[i] = NULL;		//set default value
+		arr[i] = length;		//set default value
 	}
 }
 
@@ -25,28 +25,28 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				//this step: print
 				//the first column, Mashed
 				bool isMashed = false;
-				if(arr[0] != NULL){
+				if(arr[0] != length){
 					isMashed = true;
-					cout<<arr[0]<<setw(7)<<left;
+					cout<<setw(8)<<left<<arr[0];
 				}
-				else cout<<setw(8);
+				else cout<<setw(8)<<left<<" ";
 
 				//the second column, Fried
-				if(arr[1] != NULL) cout<<arr[1]<<setw(7)<<left;
-				else cout<<setw(8);
+				if(arr[1] != length) cout<<setw(8)<<left<<arr[1];
+				else cout<<setw(8)<<left<<" ";
 
 				//the third column, Umpire
-				if(arr[2] != NULL){
-					if(isMashed) cout<<"M "<<arr[2]<<setw(5)<<left;
-					else cout<<"F "<<arr[2]<<setw(5)<<left;
+				if(arr[2] != length){
+					if(isMashed) cout<<"M "<<setw(7)<<left<<arr[2];
+					else cout<<"F "<<setw(7)<<left<<arr[2];
 				}
-				else cout<<setw(8);
+				else cout<<setw(8)<<left<<" ";
 				
 				//the rest of players
 				bool isEven = true;
 				for(unsigned int i=3; i<length; i++){
 					
-					if(arr[i] != NULL){	//not an empty column
+					if(arr[i] != length){	//not an empty column
 						char symbol;
 						//confirm the direction that the player is passing
 						if(isEven){	//LRPlayer
@@ -56,16 +56,16 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 						else symbol = 'R';	//RMPlayer
 
 						if(i+1 == length){	//the last column
-							cout<<symbol<<" "<<arr[i]<<setw(1)<<left<<endl;
+							cout<<symbol<<" "<<setw(2)<<left<<arr[i]<<endl;
 						}
 						else{	//not the last column
-							cout<<symbol<<" "<<arr[i]<<setw(5)<<left;
+							cout<<symbol<<" "<<setw(6)<<left<<arr[i];
 						}
 					}
 
 					else{	//an empty column
-						if(i+1 == length) cout<<setw(4)<<endl;	//the last column
-						else cout<<setw(8);		//not the last column
+						if(i+1 == length) cout<<setw(4)<<left<<" "<<endl;	//the last column
+						else cout<<setw(8)<<left<<" ";		//not the last column
 					}
 
 					if(isEven) isEven = false;

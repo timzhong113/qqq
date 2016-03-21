@@ -29,9 +29,6 @@ void Umpire::start(){
 				}
 
 				isEven = false;
-				cout<<"*********"<<endl;
-				cout<<"position is: "<<position<<endl;
-				cout<<"player's id: "<<players[position]->getId()<<endl;
 				players[position]->toss(mashed);
 			}
 			else{	//throw fried potato
@@ -50,9 +47,6 @@ void Umpire::start(){
 				}
 
 				isEven = true;
-				cout<<"++++++++"<<endl;
-				cout<<"position is: "<<position<<endl;
-				cout<<"player's id: "<<players[position]->getId()<<endl;
 				players[position]->toss(fried);
 			}
 		}catch(Player::Lost lost){
@@ -65,9 +59,7 @@ void Umpire::start(){
 				}
 			}
 			prt.print(Printer::Player,2,0,lost.id);
-			cout<<"looking for fault"<<endl;
 			players.erase(players.begin()+position-1);
-			cout<<"looking for fault2"<<endl;
 			if(players.size()==1){	//someone wins
 				unsigned int winner = players[0]->getId();
 				prt.print(Printer::Player,3,0,winner);

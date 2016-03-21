@@ -16,7 +16,7 @@ state = 6 means Umpire called printer
 
 class Printer {
 	unsigned int length;
-	unsigned int *arr[];
+	unsigned int *arr;
   public:
     enum Kind { Mashed, Fried, Umpire, Player };
     Printer( unsigned int players );

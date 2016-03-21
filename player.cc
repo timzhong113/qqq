@@ -27,7 +27,6 @@ unsigned int LRPlayer::getId(){
 
 void RNPlayer::toss( Potato &potato ){
 	try{
-		cout<<"11111111111"<<endl;
 		potato.countdown();
 	}catch(Potato::Expire){	//player loses
 		throw lost;
@@ -42,7 +41,6 @@ void RNPlayer::toss( Potato &potato ){
 
 void LRPlayer::toss( Potato &potato ){
 	try{
-		cout<<"2222222222"<<endl;
 		potato.countdown();
 	}catch(Potato::Expire){	//player loses
 		throw lost;
