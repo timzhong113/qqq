@@ -33,10 +33,7 @@ void RNPlayer::toss( Potato &potato ){
 	
 	//pass to next player
 	uint32_t size = (uint32_t)players.size();
-	cerr << size << endl;
 	unsigned int next = (unsigned int)prng(size-1);
-	cout<<"*******"<<endl;
-	cout<<"next player's position: "<<next<<endl;
 	prt.print(Printer::Player,1,players[next]->getId(),getId());
 	players[next]->toss(potato);
 }
