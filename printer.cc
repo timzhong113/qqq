@@ -83,8 +83,8 @@ void Printer::print( Kind kind, unsigned int state, unsigned int id, unsigned in
 				if(i<3) cout<<setw(8);
 				else{
 					if(i+1 == length){	//last column
-						if(i-3 == player) cout<<setw(4)<<left<<"*";
-						else cout<<setw(4)<<left<<"...";
+						if(i-3 == player) cout<<setw(4)<<left<<"*"<<endl;
+						else cout<<setw(4)<<left<<"..."<<endl;;
 					}
 					else{
 						if(i-3 == player) cout<<setw(8)<<left<<"*";
