@@ -11,11 +11,13 @@ Player::Player( Printer &prt, unsigned int id, Players &players ):prt(prt),id(id
 
 RNPlayer::RNPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){
 	players[id]=this;
+	cout<<"first player id: "<<players[0]->getId()<<endl;
 }
 
 LRPlayer::LRPlayer( Printer &prt, unsigned int id, Players &players ):Player(prt,id,players){
 	players[id]=this;
 	direction = false;
+	cout<<"first player id: "<<players[0]->getId()<<endl;
 }
 
 unsigned int Player::getId(){
