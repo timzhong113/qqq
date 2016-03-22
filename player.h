@@ -11,8 +11,9 @@ class Printer;
 class Player {
   protected:
     Printer &prt;
-    unsigned int id;
+    
   public:
+    unsigned int id;
     typedef vector<Player *> Players;             // container type of your choice
     Players &players;
     struct Lost {                    // raise after timer expires

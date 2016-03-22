@@ -81,6 +81,9 @@ int main( int argc, char *argv[] ){
 	}
 	cout<<"player 0: "<<players[0]->getId()<<endl;
 	for(unsigned int i=0; i<nop; i++){
+		players[i]->id=i;
+	}
+	for(unsigned int i=0; i<nop; i++){
 		cout<<"player id: "<<players[i]->getId()<<endl;
 	}
 	//umpire
